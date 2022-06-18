@@ -21,6 +21,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+Route::get('admin-page', function() {
+    return 'Halaman untuk Admin';
+})->middleware('role:admin|user')->name('admin.page');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('user-page', function() {
+    return 'Halaman untuk User';
+})->middleware('role:user')->name('user.page');
